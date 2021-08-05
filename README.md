@@ -10,8 +10,6 @@ I created this project for the purpose of learning more about MariaDB, so I took
 
 ![](./ss/3.png)
 
-![](./ss/4.png)
-
 ## Prerequisites
 
 You will need the following things properly installed on your computer.
