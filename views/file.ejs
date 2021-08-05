@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="/css/normalize.css" />
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+            crossorigin="anonymous"
+        />
+        <link rel="stylesheet" href="/css/main.css" />
+        <title>PastePhoto</title>
+    </head>
+
+    <body id="app">
+
+                <!-- LOading -->
+
+                <div id="loading" class="load">
+                    <span class="loader"><span class="loader-inner"></span></span>
+                    </div>
+            
+                    <!-- END  -->
+
+        <!-- TYPE PASSWORD IF FILE IS SECURED! -->
+        <% if (Password) { %>
+        <div id="cover">
+            <div class="wrapper fadeInDown">
+                <div id="formContent">
+                    <!-- Tabs Titles -->
+                    <h2 class="active">This file is secured</h2>
+                    <!-- Login Form -->
+                    <form>
+                        <input v-model="PasswordOfFile" type="password" class="fadeIn third" placeholder="Password" />
+                        <input
+                            v-on:click="SubmitPassword('<%= id %>')"
+                            type="button"
+                            class="fadeIn fourth"
+                            value="Submit"
+                        />
+                    </form>
+                </div>
+            </div>
+        </div>
+        <% } %>
+
+        <!-- END  -->
+
+        <div style="display: none;" id="body" class="BodyOfUploadedFile">
+            <div v-on:click="test" class="logo">PastePhoto - Easy Image Uploads</div>
+            <div class="MediumLogoText">Free image hosting and sharing service</div>
+
+            <div class="preview">
+                <div class="title">
+                    <% if (tittle != 0) { %> <%= tittle %> <% } else { %> (This photo doesn't a have tittle!) <% } %>
+                </div>
+                <img src="/<%= PhotoId %>" />
+                <div class="Description">
+                    <% if (description != 0) { %> <%= description %> <% } else { %> This image doesn't a have description.
+                    <% } %>
+                </div>
+            </div>
+
+            <div class="links">
+                <div class="name">Review link:</div>
+                <input v-on:click="copy('<%= ReviewLink %>')" value="<%= ReviewLink %>" type="text" readonly="" />
+                <div class="name">Direct link:</div>
+                <input v-on:click="copy('<%= DirectLink %>')" value="<%= DirectLink %>" type="text" readonly="" />
+               <div class="message"> (Just click on the input to copy the link to clipboard!) </div>
+            </div>
+        </div>
+
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"
+        ></script>
+        <script src="/js/vue.global.prod.js"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script defer src="/js/file.js"></script>
+    </body>
+</html>
